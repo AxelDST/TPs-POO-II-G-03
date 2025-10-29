@@ -1,7 +1,20 @@
 ### Para el Requerimiento 1 (Motor de Renderizado):
 - ¿Qué patrón de diseño creacional eligieron?
+  - Para el requerimiento 1 se eligió el patrón de diseño Abstract Factory.
+
 - ¿Por qué este patrón es la solución adecuada para este problema?
+  - Este patrón es el adecuado porque el sistema necesita crear objetos de renderizado en distintos formatos (PDF, Excel, CSV) sin que el cliente conozca ni dependa de las clases concretas que los implementan.
+  El patrón Abstract Factory permite definir una interfaz para crear familias de objetos relacionados sin especificar sus clases concretas. De esta manera, se logra un bajo acoplamiento entre el cliente y las implementaciones, y el sistema queda abierto a la extensión (por ejemplo, agregar un nuevo formato como XML) sin necesidad de modificar el código existente.
+
 - ¿Qué problema(s) evita (ej. acoplamiento, violación del principio Abierto/Cerrado)?
+  - Evita el acoplamiento del código cliente con clases concretas como RenderizadorPDF o RenderizadorExcel, promoviendo la dependencia de abstracciones.
+
+  - Cumple con el principio Abierto/Cerrado (OCP): nuevos formatos pueden añadirse extendiendo la fábrica, sin alterar el código cliente existente.
+
+  - Previene duplicación de lógica de creación, centralizando la responsabilidad de instanciación en un único punto (la fábrica).
+
+  - Evita errores de compatibilidad entre objetos relacionados (por ejemplo, un renderizador PDF asociado a un formato incorrecto).
+
   
 ### Para el Requerimiento 2 (Construcción de Reportes):
 - **¿Qué patrón de diseño creacional eligieron?**
