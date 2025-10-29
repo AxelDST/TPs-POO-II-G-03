@@ -17,6 +17,13 @@
 
 ### Para el Requerimiento 3 (Gestor de Configuración):
 - ¿Qué patrón de diseño creacional eligieron?
-- ¿Por qué este patrón es la solución adecuada para este
-requerimiento?
+  Se eligió el patrón **Singleton**.
+
+- ¿Por qué este patrón es la solución adecuada para este requerimiento?
+  Porque el requerimiento 3 exige explícitamente que solo exista "una y solo una instancia del objeto GestorConfiguracion" y que haya un "único punto de acceso". El patrón Singleton está diseñado específicamente para cumplir con estos dos requisitos, evitando ineficiencias e inconsistencias de datos.
+
 - ¿Cómo garantizaron la unicidad de la instancia? 
+  La unicidad de la instancia se garantiza mediante tres mecanismos clave en el código Java:
+    1.  **Constructor Privado (`private GestorConfiguracion()`):** Esto prohíbe que cualquier otra clase pueda crear una instancia usando el operador `new`.
+    2.  **Instancia Estática Privada (`private static final GestorConfiguracion instancia ...`):** La clase misma crea y almacena su propia instancia única en una variable estática.
+    3.  **Método Público Estático (`public static GestorConfiguracion getInstance()`):** Este es el "único punto de acceso". Es el único método que puede devolver la instancia única almacenada.
