@@ -2,6 +2,7 @@ import java.time.LocalDate;
 
 import modelos.Reporte;
 import modelos.Tipo_Orientacion;
+import render.MotorDeReportes;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -35,5 +36,21 @@ public class App {
         boolean sonLaMismaInstancia = (configFinanzas == configMarketing);
         System.out.println("\n¿'configFinanzas' y 'configMarketing' son la misma instancia?");
         System.out.println("Resultado: " + sonLaMismaInstancia); // Deberá imprimir 'true'
+
+    // --------------------------------------------------
+    // PRUEBA REQUERIMIENTO 1: Motor de Renderizado (Abstract Factory)
+    System.out.println("\n--- Demostración del Motor de Reportes (Requerimiento 1) ---");
+    // Reutilizamos el 'reporte' creado arriba
+    MotorDeReportes motorPDF = MotorDeReportes.crearPDF();
+    System.out.println("\nProcesando con PDF:");
+    motorPDF.procesarReporte(reporte);
+
+    MotorDeReportes motorExcel = MotorDeReportes.crearExcel();
+    System.out.println("\nProcesando con Excel:");
+    motorExcel.procesarReporte(reporte);
+
+    MotorDeReportes motorCSV = MotorDeReportes.crearCSV();
+    System.out.println("\nProcesando con CSV:");
+    motorCSV.procesarReporte(reporte);
     }
 }
