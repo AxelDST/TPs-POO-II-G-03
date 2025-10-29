@@ -20,7 +20,7 @@ public class App {
         System.out.println("\n");
 
         // Ejemplo Requerimiento 3: usar el Gestor de Configuración Global (Singleton)
-        // --- REQUERIMIENTO 3: PRUEBA DEL SINGLETON (El que debes agregar) ---
+        // --- REQUERIMIENTO 3: PRUEBA DEL SINGLETON ---
         System.out.println("--- Demostración del Singleton (Requerimiento 3) ---");
 
         System.out.println("Módulo de Finanzas pide la instancia...");
