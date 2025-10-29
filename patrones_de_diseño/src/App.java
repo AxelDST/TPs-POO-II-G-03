@@ -13,7 +13,7 @@ public class App {
                 .conFecha(LocalDate.of(2025, 10, 27))
                 .conOrientacion(Tipo_Orientacion.HORIZONTAL)
                 .build();
-
+        //asdas
         System.out.println(reporte);
 
         // Agrega un espacio para que se vea más limpio
