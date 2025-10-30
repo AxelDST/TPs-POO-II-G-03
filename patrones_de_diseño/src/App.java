@@ -14,7 +14,7 @@ public class App {
                 .conFecha(LocalDate.of(2025, 10, 27))
                 .conOrientacion(Tipo_Orientacion.HORIZONTAL)
                 .build();
-        //asdas
+        //
         System.out.println(reporte);
 
         // Agrega un espacio para que se vea más limpio
@@ -37,20 +37,20 @@ public class App {
         System.out.println("\n¿'configFinanzas' y 'configMarketing' son la misma instancia?");
         System.out.println("Resultado: " + sonLaMismaInstancia); // Deberá imprimir 'true'
 
-    // --------------------------------------------------
-    // PRUEBA REQUERIMIENTO 1: Motor de Renderizado (Abstract Factory)
-    System.out.println("\n--- Demostración del Motor de Reportes (Requerimiento 1) ---");
-    // Reutilizamos el 'reporte' creado arriba
-    MotorDeReportes motorPDF = MotorDeReportes.crearPDF();
-    System.out.println("\nProcesando con PDF:");
-    motorPDF.procesarReporte(reporte);
+        // --------------------------------------------------
+        // PRUEBA REQUERIMIENTO 1: Motor de Renderizado (Abstract Factory)
+        System.out.println("\n--- Demostración del Motor de Reportes (Requerimiento 1) ---");
+        // Reutilizamos el 'reporte' creado arriba
+        MotorDeReportes motorPDF = MotorDeReportes.crearPDF();
+        System.out.println("\nProcesando con PDF:");
+        motorPDF.procesarReporte(reporte);
 
-    MotorDeReportes motorExcel = MotorDeReportes.crearExcel();
-    System.out.println("\nProcesando con Excel:");
-    motorExcel.procesarReporte(reporte);
+        MotorDeReportes motorExcel = MotorDeReportes.crearExcel();
+        System.out.println("\nProcesando con Excel:");
+        motorExcel.procesarReporte(reporte);
 
-    MotorDeReportes motorCSV = MotorDeReportes.crearCSV();
-    System.out.println("\nProcesando con CSV:");
-    motorCSV.procesarReporte(reporte);
+        MotorDeReportes motorCSV = MotorDeReportes.crearCSV();
+        System.out.println("\nProcesando con CSV:");
+        motorCSV.procesarReporte(reporte);
     }
 }
