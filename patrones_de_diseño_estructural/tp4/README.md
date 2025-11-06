@@ -3,14 +3,20 @@
 ### Escenario 1 – Ensamblaje de computadoras (Composite + Decorator)
 
 **1. Análisis del Escenario:**  
-*(Describir aquí las clases principales, sus responsabilidades y los problemas de acoplamiento o complejidad detectados.)*  
+El sistema debe gestionar el ensamblaje de computadoras, donde cada PC está compuesta por múltiples componentes de hardware (CPU, memoria RAM, disco SSD, placa madre) dentro de un gabinete. Además, el cliente puede solicitar servicios adicionales como garantía extendida o instalación del equipo.  
+El problema surge al intentar calcular el precio total y mostrar el detalle de una computadora completa, ya que se debe sumar el costo de todos los componentes individuales más el del gabinete. Además, las funcionalidades adicionales (garantía, instalación) deberían poder agregarse dinámicamente sin modificar las clases existentes, evitando crear múltiples subclases para cada combinación posible.
+
 
 **2. Identificación del Patrón:**  
-*(Indicar qué patrón o combinación de patrones se aplicó y por qué son adecuados para este caso.)*  
+Se aplicó una combinación de dos patrones estructurales:  
+- **Composite**: Para tratar componentes individuales (CPU, RAM, etc.) y composiciones de componentes (Gabinete) de manera uniforme a través de la interfaz `ComponentePC`. Esto permite que el gabinete contenga múltiples componentes y calcule su precio total de forma recursiva.  
+- **Decorator**: Para agregar responsabilidades adicionales (garantía extendida, servicio de instalación) de manera dinámica y flexible, sin modificar las clases de componentes existentes. Los decoradores (`GarantiaExtendida`, `ServicioInstalacion`) envuelven cualquier `ComponentePC` y añaden funcionalidad extra.
+
 
 **3. Justificación de la Elección:**  
-*(Explicar brevemente por qué los patrones elegidos resuelven los problemas detectados, vinculándolos con su intención original.)*  
-
+El patrón **Composite** es ideal porque permite construir estructuras de árbol donde tanto objetos individuales como composiciones se tratan de la misma manera. Esto simplifica el código cliente, que puede trabajar con un único componente o con todo un gabinete sin necesidad de distinguir entre ambos.  
+El patrón **Decorator** permite extender la funcionalidad de los objetos de forma flexible y dinámica. En lugar de crear clases como `GabineteConGarantia`, `GabineteConInstalacion`, etc., los decoradores se pueden apilar en cualquier orden y combinación, promoviendo el principio de abierto/cerrado: las clases están abiertas a extensión pero cerradas a modificación.  
+La combinación de ambos patrones resuelve eficientemente el problema de manejar jerarquías de componentes y agregar funcionalidades opcionales de manera modular y mantenible.
 
 ---
 
