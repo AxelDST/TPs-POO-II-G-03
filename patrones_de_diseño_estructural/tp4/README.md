@@ -35,11 +35,14 @@ Esto mejora la **legibilidad**, facilita el **mantenimiento** y permite que los 
 ### Escenario 3 – Servicio de logística (Adapter)
 
 **1. Análisis del Escenario:**  
-*(Describir las clases del sistema y de la API externa, y los problemas de compatibilidad entre interfaces.)*  
+En este caso, el sistema interno cuenta con una interfaz denominada `IServicioEnvio`, la cual define los métodos que utiliza la aplicación para interactuar con cualquier servicio de envío: `calcularCosto()`, `obtenerTiempoEstimado()` y `despacharPedido()`. Sin embargo, la empresa comenzó a trabajar con una API externa llamada `ApiLogisticaVeloz`, que ofrece funcionalidades similares pero con una estructura distinta.  
+Esta API utiliza los métodos `cotizarEnvio(int cpDestino)` y `enviarPaquete(DatosEnvio datos)`, devolviendo objetos de tipo `Cotizacion` y recibiendo datos en una clase `DatosEnvio`.  
+El problema surge porque las firmas de los métodos y los tipos de datos no coinciden: el sistema interno usa `String` para los códigos postales, mientras que la API requiere `int`, y además los nombres y estructuras de los métodos son diferentes. Por lo tanto, el sistema no puede utilizar la API directamente sin romper su propia interfaz o modificar código interno.
 
 **2. Identificación del Patrón:**  
-*(Indicar qué patrón se utilizó y cómo adapta una interfaz a otra.)*  
+Para resolver esta incompatibilidad se aplicó el patrón **Adapter**. Este patrón permite conectar dos interfaces que no son compatibles sin necesidad de modificar sus implementaciones originales.  
 
 **3. Justificación de la Elección:**  
-*(Explicar por qué el uso de Adapter permite reutilizar la API sin modificarla y cumplir con la interfaz esperada.)*  
+El uso del patrón Adapter es adecuado porque permite reutilizar la API externa sin modificar su código, respetando al mismo tiempo la estructura definida en el sistema interno. Gracias al adapter, el cliente puede seguir utilizando su interfaz `IServicioEnvio` sin preocuparse por los detalles técnicos o las diferencias de formato que presenta el proveedor externo.  
+Además, este enfoque reduce el acoplamiento, ya que los cambios futuros en la API se manejarían únicamente dentro del adaptador, sin afectar al resto de la aplicación. 
 
